@@ -43,5 +43,8 @@ public final class App {
   public static void main(final String[] args) {
     var task = new SimpleTask();
     task.executeWith(() -> LOGGER.info("I'm done now."));
+    task.executeWith(()->{
+      System.out.println("俺干完了！");
+    });
   }
 }
