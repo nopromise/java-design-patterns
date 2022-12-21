@@ -22,26 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
+package com.iluwatar.bridge2;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-
-import com.iluwatar.bridge.weapon.Hammer;
-import org.junit.jupiter.api.Test;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Tests for hammer
+ * Sword.
  */
-class HammerTest extends WeaponTest {
+@Slf4j
+@AllArgsConstructor
+public class SwordWithSouEating extends SoulEatingEnchantment implements Weapon {
 
-  /**
-   * Invoke all possible actions on the weapon and check if the actions are executed on the actual
-   * underlying weapon implementation.
-   */
-  @Test
-  void testHammer() {
-    final var hammer = spy(new Hammer(mock(FlyingEnchantment.class)));
-    testBasicWeaponActions(hammer);
-  }
+    @Override
+    public void wield() {
+        LOGGER.info("The sword is wielded.");
+        super.onActivate();
+    }
+
+    @Override
+    public void swing() {
+        LOGGER.info("The sword is swung.");
+        super.apply();
+    }
+
+    @Override
+    public void unwield() {
+        LOGGER.info("The sword is unwielded.");
+        super.onDeactivate();
+    }
+
 }

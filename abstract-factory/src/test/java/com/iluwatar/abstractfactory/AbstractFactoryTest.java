@@ -24,6 +24,7 @@
  */
 package com.iluwatar.abstractfactory;
 
+import com.iluwatar.abstractfactory.product.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -22,12 +22,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge.weapon;
+
+import com.iluwatar.bridge.Enchantment;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Army interface.
+ * Hammer.
  */
-public interface Army {
+@Slf4j
+@AllArgsConstructor
+public class Hammer implements Weapon {
+    /**
+     * 依赖抽象，可以设置不同的魔法
+     */
+    private final Enchantment enchantment;
 
-  String getDescription();
+    @Override
+    public void wield() {
+        LOGGER.info("The hammer is wielded.");
+        enchantment.onActivate();
+    }
+
+    @Override
+    public void swing() {
+        LOGGER.info("The hammer is swung.");
+        enchantment.apply();
+    }
+
+    @Override
+    public void unwield() {
+        LOGGER.info("The hammer is unwielded.");
+        enchantment.onDeactivate();
+    }
+
+    @Override
+    public Enchantment getEnchantment() {
+        return enchantment;
+    }
 }

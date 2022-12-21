@@ -22,40 +22,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
-
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+package com.iluwatar.abstractfactory.product;
 
 /**
- * Sword.
+ * OrcArmy.
  */
-@Slf4j
-@AllArgsConstructor
-public class Sword implements Weapon {
+public class UltramanArmy implements Army {
 
-  private final Enchantment enchantment;
+  public static final String DESCRIPTION = "This is the Ultraman army!";
 
   @Override
-  public void wield() {
-    LOGGER.info("The sword is wielded.");
-    enchantment.onActivate();
-  }
-
-  @Override
-  public void swing() {
-    LOGGER.info("The sword is swung.");
-    enchantment.apply();
-  }
-
-  @Override
-  public void unwield() {
-    LOGGER.info("The sword is unwielded.");
-    enchantment.onDeactivate();
-  }
-
-  @Override
-  public Enchantment getEnchantment() {
-    return enchantment;
+  public String getDescription() {
+    return DESCRIPTION;
   }
 }

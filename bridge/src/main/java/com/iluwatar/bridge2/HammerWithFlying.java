@@ -22,17 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge2;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * KingdomFactory factory interface.
+ * Sword.
  */
-public interface KingdomFactory {
+@Slf4j
+@AllArgsConstructor
+public class HammerWithFlying extends FlyingEnchantment implements Weapon {
 
-  Castle createCastle();
+    @Override
+    public void wield() {
+        LOGGER.info("The hammer is wielded.");
+        super.onActivate();
+    }
 
-  King createKing();
+    @Override
+    public void swing() {
+        LOGGER.info("The hammer is swung.");
+        super.apply();
+    }
 
-  Army createArmy();
+    @Override
+    public void unwield() {
+        LOGGER.info("The hammer is unwielded.");
+        super.onDeactivate();
+    }
 
 }

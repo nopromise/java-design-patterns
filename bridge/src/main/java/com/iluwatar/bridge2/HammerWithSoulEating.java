@@ -22,17 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge2;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * ElfKing.
+ * Sword.
  */
-public class ElfKing implements King {
+@Slf4j
+@AllArgsConstructor
+public class HammerWithSoulEating extends SoulEatingEnchantment implements Weapon {
 
-  static final String DESCRIPTION = "This is the elven king!";
+    @Override
+    public void wield() {
+        LOGGER.info("The hammer is wielded.");
+        super.onActivate();
+    }
 
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
+    @Override
+    public void swing() {
+        LOGGER.info("The hammer is swung.");
+        super.apply();
+    }
+
+    @Override
+    public void unwield() {
+        LOGGER.info("The hammer is unwielded.");
+        super.onDeactivate();
+    }
+
 }

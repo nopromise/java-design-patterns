@@ -24,6 +24,12 @@
  */
 package com.iluwatar.abstractfactory;
 
+import com.iluwatar.abstractfactory.factory.ElfKingdomFactory;
+import com.iluwatar.abstractfactory.factory.KingdomFactory;
+import com.iluwatar.abstractfactory.factory.OrcKingdomFactory;
+import com.iluwatar.abstractfactory.product.Army;
+import com.iluwatar.abstractfactory.product.Castle;
+import com.iluwatar.abstractfactory.product.King;
 import lombok.Getter;
 import lombok.Setter;
 

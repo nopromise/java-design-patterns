@@ -22,14 +22,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.abstractfactory.product;
 
 /**
- * OrcArmy.
+ * OrcKing.
  */
-public class OrcArmy implements Army {
+public class UltramanKing implements King {
 
-  static final String DESCRIPTION = "This is the orc army!";
+  public static final String DESCRIPTION = "This is the Ultraman king!";
 
   @Override
   public String getDescription() {

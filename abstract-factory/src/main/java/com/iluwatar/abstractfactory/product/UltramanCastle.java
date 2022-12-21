@@ -22,17 +22,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.abstractfactory.product;
 
 /**
- * ElfCastle.
+ * OrcCastle.
  */
-public class ElfCastle implements Castle {
+public class UltramanCastle implements Castle {
 
-  static final String DESCRIPTION = "This is the elven castle!";
+    public static final String DESCRIPTION = "This is the Ultraman castle!";
 
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
+    @Override
+    public String getDescription() {
+        return DESCRIPTION;
+    }
 }

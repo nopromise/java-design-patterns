@@ -22,10 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
+package com.iluwatar.bridge2;
 
-import com.iluwatar.bridge.weapon.Hammer;
-import com.iluwatar.bridge.weapon.Sword;
+import com.iluwatar.bridge.Enchantment;
 import com.iluwatar.bridge.weapon.Weapon;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,13 +44,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    LOGGER.info("The knight receives an enchanted sword.");
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+/*    LOGGER.info("The knight receives an enchanted sword.");
     var enchantedSword = new Sword(new SoulEatingEnchantment());
     enchantedSword.wield();
     enchantedSword.swing();
@@ -61,13 +60,24 @@ public class App {
     var hammer = new Hammer(new FlyingEnchantment());
     hammer.wield();
     hammer.swing();
-    hammer.unwield();
+    hammer.unwield();*/
 
-/*    LOGGER.info("The knight receives an enchanted sword.");
-    var enchantedFlySword = new Sword(new FlyingEnchantment());
-    enchantedFlySword.wield();
-    enchantedFlySword.swing();
-    enchantedFlySword.unwield();*/
+        SwordWithFlying swordWithFlying = new SwordWithFlying();
+        swordWithFlying.wield();
+        swordWithFlying.swing();
+        swordWithFlying.unwield();
 
-  }
+        SwordWithSouEating swordWithSouEating = new SwordWithSouEating();
+        swordWithSouEating.wield();
+        swordWithSouEating.swing();
+        swordWithSouEating.unwield();
+
+
+        HammerWithFlying hammerWithFlying = new HammerWithFlying();
+        hammerWithFlying.wield();
+        hammerWithFlying.swing();
+        hammerWithFlying.unwield();
+
+
+    }
 }

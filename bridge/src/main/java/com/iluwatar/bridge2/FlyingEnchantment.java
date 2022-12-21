@@ -22,25 +22,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge2;
+
+import com.iluwatar.bridge.Enchantment;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * OrcKingdomFactory concrete factory.
+ * FlyingEnchantment.
  */
-public class OrcKingdomFactory implements KingdomFactory {
+@Slf4j
+public class FlyingEnchantment implements Enchantment {
 
   @Override
-  public Castle createCastle() {
-    return new OrcCastle();
+  public void onActivate() {
+    LOGGER.info("The item begins to glow faintly.");
   }
 
   @Override
-  public King createKing() {
-    return new OrcKing();
+  public void apply() {
+    LOGGER.info("The item flies and strikes the enemies finally returning to owner's hand.");
   }
 
   @Override
-  public Army createArmy() {
-    return new OrcArmy();
+  public void onDeactivate() {
+    LOGGER.info("The item's glow fades.");
   }
 }

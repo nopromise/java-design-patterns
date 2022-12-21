@@ -22,26 +22,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge.weapon;
+
+import com.iluwatar.bridge.Enchantment;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * ElfKingdomFactory concrete factory.
+ * Sword.
  */
-public class ElfKingdomFactory implements KingdomFactory {
+@Slf4j
+@AllArgsConstructor
+public class Sword implements Weapon {
+    /**
+     * 依赖抽象，可以设置不同的魔法
+     */
+    private final Enchantment enchantment;
 
-  @Override
-  public Castle createCastle() {
-    return new ElfCastle();
-  }
+    @Override
+    public void wield() {
+        LOGGER.info("The sword is wielded.");
+        enchantment.onActivate();
+    }
 
-  @Override
-  public King createKing() {
-    return new ElfKing();
-  }
+    @Override
+    public void swing() {
+        LOGGER.info("The sword is swung.");
+        enchantment.apply();
+    }
 
-  @Override
-  public Army createArmy() {
-    return new ElfArmy();
-  }
+    @Override
+    public void unwield() {
+        LOGGER.info("The sword is unwielded.");
+        enchantment.onDeactivate();
+    }
 
+    @Override
+    public Enchantment getEnchantment() {
+        return enchantment;
+    }
 }

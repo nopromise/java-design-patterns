@@ -24,6 +24,12 @@
  */
 package com.iluwatar.abstractfactory;
 
+import com.iluwatar.abstractfactory.factory.ElfKingdomFactory;
+import com.iluwatar.abstractfactory.factory.KingdomFactory;
+import com.iluwatar.abstractfactory.factory.OrcKingdomFactory;
+import com.iluwatar.abstractfactory.product.UltramanArmy;
+import com.iluwatar.abstractfactory.product.UltramanCastle;
+import com.iluwatar.abstractfactory.product.UltramanKing;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -69,6 +75,17 @@ public class App implements Runnable {
 
     LOGGER.info("orc kingdom");
     createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+    LOGGER.info(kingdom.getArmy().getDescription());
+    LOGGER.info(kingdom.getCastle().getDescription());
+    LOGGER.info(kingdom.getKing().getDescription());
+    //TODO  add
+    UltramanArmy ultramanArmy = new UltramanArmy();
+    UltramanKing ultramanKing = new UltramanKing();
+    UltramanCastle ultramanCastle = new UltramanCastle();
+    kingdom.setArmy(ultramanArmy);
+    kingdom.setKing(ultramanKing);
+    kingdom.setCastle(ultramanCastle);
+    LOGGER.info("Ultraman kingdom");
     LOGGER.info(kingdom.getArmy().getDescription());
     LOGGER.info(kingdom.getCastle().getDescription());
     LOGGER.info(kingdom.getKing().getDescription());

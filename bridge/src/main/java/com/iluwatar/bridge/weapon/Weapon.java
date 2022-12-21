@@ -22,17 +22,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge.weapon;
+
+import com.iluwatar.bridge.Enchantment;
 
 /**
- * OrcKing.
+ * Weapon.
  */
-public class OrcKing implements King {
+public interface Weapon {
 
-  static final String DESCRIPTION = "This is the orc king!";
+  void wield();
 
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
+  void swing();
+
+  void unwield();
+
+  Enchantment getEnchantment();
 }

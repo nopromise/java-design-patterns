@@ -22,12 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.bridge2;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * King interface.
+ * Sword.
  */
-public interface King {
+@Slf4j
+@AllArgsConstructor
+public class SwordWithFlying extends FlyingEnchantment implements Weapon {
 
-  String getDescription();
+    @Override
+    public void wield() {
+        LOGGER.info("The sword is wielded.");
+        super.onActivate();
+    }
+
+    @Override
+    public void swing() {
+        LOGGER.info("The sword is swung.");
+        super.apply();
+    }
+
+    @Override
+    public void unwield() {
+        LOGGER.info("The sword is unwielded.");
+        super.onDeactivate();
+    }
+
 }

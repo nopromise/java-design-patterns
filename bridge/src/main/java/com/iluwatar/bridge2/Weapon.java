@@ -22,7 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
+package com.iluwatar.bridge2;
+
+import com.iluwatar.bridge.Enchantment;
 
 /**
  * Weapon.
@@ -35,5 +37,5 @@ public interface Weapon {
 
   void unwield();
 
-  Enchantment getEnchantment();
+//  Enchantment getEnchantment();
 }

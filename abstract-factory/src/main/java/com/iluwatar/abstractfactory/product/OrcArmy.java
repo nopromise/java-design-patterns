@@ -22,12 +22,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.abstractfactory;
+package com.iluwatar.abstractfactory.product;
 
 /**
- * Castle interface.
+ * OrcArmy.
  */
-public interface Castle {
+public class OrcArmy implements Army {
 
-  String getDescription();
+  public static final String DESCRIPTION = "This is the orc army!";
+
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
 }

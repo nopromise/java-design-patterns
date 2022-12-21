@@ -22,26 +22,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
+package com.iluwatar.abstractfactory.factory;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-
-import com.iluwatar.bridge.weapon.Hammer;
-import org.junit.jupiter.api.Test;
+import com.iluwatar.abstractfactory.product.Army;
+import com.iluwatar.abstractfactory.product.Castle;
+import com.iluwatar.abstractfactory.product.King;
 
 /**
- * Tests for hammer
+ * KingdomFactory factory interface.
  */
-class HammerTest extends WeaponTest {
+public interface KingdomFactory {
 
-  /**
-   * Invoke all possible actions on the weapon and check if the actions are executed on the actual
-   * underlying weapon implementation.
-   */
-  @Test
-  void testHammer() {
-    final var hammer = spy(new Hammer(mock(FlyingEnchantment.class)));
-    testBasicWeaponActions(hammer);
-  }
+  Castle createCastle();
+
+  King createKing();
+
+  Army createArmy();
+
 }

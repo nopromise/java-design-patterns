@@ -22,40 +22,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.bridge;
-
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+package com.iluwatar.abstractfactory.product;
 
 /**
- * Hammer.
+ * King interface.
  */
-@Slf4j
-@AllArgsConstructor
-public class Hammer implements Weapon {
+public interface King {
 
-  private final Enchantment enchantment;
-
-  @Override
-  public void wield() {
-    LOGGER.info("The hammer is wielded.");
-    enchantment.onActivate();
-  }
-
-  @Override
-  public void swing() {
-    LOGGER.info("The hammer is swung.");
-    enchantment.apply();
-  }
-
-  @Override
-  public void unwield() {
-    LOGGER.info("The hammer is unwielded.");
-    enchantment.onDeactivate();
-  }
-
-  @Override
-  public Enchantment getEnchantment() {
-    return enchantment;
-  }
+  String getDescription();
 }
