@@ -24,6 +24,8 @@
  */
 package com.iluwatar.visitor;
 
+import com.iluwatar.visitor.unitVisitor.SergeantVisitor;
+
 import java.util.Optional;
 
 /**

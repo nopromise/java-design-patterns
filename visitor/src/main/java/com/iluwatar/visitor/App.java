@@ -24,6 +24,13 @@
  */
 package com.iluwatar.visitor;
 
+import com.iluwatar.visitor.unit.Commander;
+import com.iluwatar.visitor.unit.Sergeant;
+import com.iluwatar.visitor.unit.Soldier;
+import com.iluwatar.visitor.unitVisitor.CommanderVisitor;
+import com.iluwatar.visitor.unitVisitor.SergeantVisitor;
+import com.iluwatar.visitor.unitVisitor.SoldierVisitor;
+
 /**
  * <p>Visitor pattern defines a mechanism to apply operations on nodes in a hierarchy. New
  * operations can be added without altering the node interface.</p>
@@ -34,20 +41,33 @@ package com.iluwatar.visitor;
  */
 public class App {
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+/*        //正常行为
+        var commander1 = new Commander();
+        var sergeant1 = new Sergeant();
+        var soldier1 = new Soldier();
+        commander1.fight();
+        sergeant1.fight();
+        soldier1.fight();*/
 
-    var commander = new Commander(
-        new Sergeant(new Soldier(), new Soldier(), new Soldier()),
-        new Sergeant(new Soldier(), new Soldier(), new Soldier())
-    );
-    commander.accept(new SoldierVisitor());
-    commander.accept(new SergeantVisitor());
-    commander.accept(new CommanderVisitor());
-
-  }
+        //需要添加新行为
+        var commander = new Commander(
+                new Sergeant("士官John","3级",new Soldier("士兵A"), new Soldier("士兵B"), new Soldier("士兵C")),
+                new Sergeant("士官Saul","5级",new Soldier("士兵D"), new Soldier("士兵E"), new Soldier("士兵F"))
+        );
+        //访问士兵
+        commander.accept(new SoldierVisitor());
+        commander.accept(new SergeantVisitor());
+        commander.accept(new CommanderVisitor());
+        //
+      /*  var soldier = new Soldier();
+        soldier.accept(new SoldierVisitor());
+        soldier.accept(new SergeantVisitor());
+        soldier.accept(new CommanderVisitor());*/
+    }
 }

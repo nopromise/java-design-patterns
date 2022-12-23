@@ -22,31 +22,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.visitor;
+package com.iluwatar.visitor.unit;
 
-import com.iluwatar.visitor.unit.Commander;
 import com.iluwatar.visitor.unitVisitor.UnitVisitor;
-
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Date: 12/30/15 - 19:45 PM.
- *
- * @author Jeroen Meulemeester
+ * Commander.
  */
-class CommanderTest extends UnitTest<Commander> {
+@Slf4j
+public class Commander extends Unit {
 
-  /**
-   * Create a new test instance for the given {@link Commander}.
-   */
-  public CommanderTest() {
-    super(Commander::new);
-  }
+    public Commander(Unit... children) {
+        super(children);
+    }
 
-  @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
-  }
+    @Override
+    public void fight() {
+        LOGGER.info("长官指挥所指挥....");
+    }
 
+    /**
+     * Accept a Visitor.
+     *
+     * @param visitor UnitVisitor to be accepted
+     */
+    @Override
+    public void accept(UnitVisitor visitor) {
+        visitor.visit(this);
+        super.accept(visitor);
+    }
+
+    @Override
+    public String toString() {
+        return "commander";
+    }
 }

@@ -22,31 +22,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.visitor;
+package com.iluwatar.visitor.unitVisitor;
 
 import com.iluwatar.visitor.unit.Commander;
-import com.iluwatar.visitor.unitVisitor.UnitVisitor;
-
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
+import com.iluwatar.visitor.unit.Sergeant;
+import com.iluwatar.visitor.unit.Soldier;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Date: 12/30/15 - 19:45 PM.
- *
- * @author Jeroen Meulemeester
+ * CommanderVisitor.
  */
-class CommanderTest extends UnitTest<Commander> {
+@Slf4j
+public class CommanderVisitor implements UnitVisitor {
 
   /**
-   * Create a new test instance for the given {@link Commander}.
+   * Soldier Visitor method.
+   * @param soldier Soldier to be visited
    */
-  public CommanderTest() {
-    super(Commander::new);
-  }
-
   @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
+  public void visit(Soldier soldier) {
+    // Do nothing
   }
 
+  /**
+   * Sergeant Visitor method.
+   * @param sergeant Sergeant to be visited
+   */
+  @Override
+  public void visit(Sergeant sergeant) {
+    // Do nothing
+  }
+
+  /**
+   * Commander Visitor method.
+   * @param commander Commander to be visited
+   */
+  @Override
+  public void visit(Commander commander) {
+    //很高兴见到指挥官
+    LOGGER.info("Good to see you {}", commander);
+  }
 }

@@ -22,25 +22,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.visitor;
+package com.iluwatar.visitor.unit;
 
-import java.util.Arrays;
+import com.iluwatar.visitor.unitVisitor.UnitVisitor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Interface for the nodes in hierarchy.
+ * Soldier.
  */
-public abstract class Unit {
+@Slf4j
+public class Soldier extends Unit {
+    private String name;
 
-  private final Unit[] children;
+    public Soldier(String name, Unit... children) {
+        super(children);
+        this.name = name;
+    }
 
-  public Unit(Unit... children) {
-    this.children = children;
-  }
+    public Soldier(Unit... children) {
+        super(children);
+    }
 
-  /**
-   * Accept visitor.
-   */
-  public void accept(UnitVisitor visitor) {
-    Arrays.stream(children).forEach(child -> child.accept(visitor));
-  }
+    @Override
+    public void fight() {
+        LOGGER.info("士兵冲锋....");
+    }
+
+    /**
+     * Accept a Visitor.
+     *
+     * @param visitor UnitVisitor to be accepted
+     */
+    @Override
+    public void accept(UnitVisitor visitor) {
+        visitor.visit(this);
+        super.accept(visitor);
+    }
+
+    @Override
+    public String toString() {
+        return "soldier";
+    }
+
+    public String getName() {
+        return name;
+    }
 }

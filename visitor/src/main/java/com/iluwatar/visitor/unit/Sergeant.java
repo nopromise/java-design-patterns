@@ -22,31 +22,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.visitor;
+package com.iluwatar.visitor.unit;
 
-import com.iluwatar.visitor.unit.Commander;
 import com.iluwatar.visitor.unitVisitor.UnitVisitor;
-
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Date: 12/30/15 - 19:45 PM.
- *
- * @author Jeroen Meulemeester
+ * Sergeant.
  */
-class CommanderTest extends UnitTest<Commander> {
+@Slf4j
+public class Sergeant extends Unit {
+    private String name;
+    private String level;
 
-  /**
-   * Create a new test instance for the given {@link Commander}.
-   */
-  public CommanderTest() {
-    super(Commander::new);
-  }
+    public Sergeant(String name, String level, Unit... children) {
+        super(children);
+        this.name = name;
+        this.level = level;
+    }
 
-  @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
-  }
+    public Sergeant(Unit... children) {
+        super(children);
+    }
 
+    @Override
+    public void fight() {
+        LOGGER.info("军士长带领士兵冲锋....");
+    }
+
+
+    /**
+     * Accept a Visitor.
+     *
+     * @param visitor UnitVisitor to be accepted
+     */
+    @Override
+    public void accept(UnitVisitor visitor) {
+        visitor.visit(this);
+        super.accept(visitor);
+    }
+
+
+    @Override
+    public String toString() {
+        return "sergeant";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLevel() {
+        return level;
+    }
 }

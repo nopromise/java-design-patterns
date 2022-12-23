@@ -24,6 +24,9 @@
  */
 package com.iluwatar.visitor;
 
+import com.iluwatar.visitor.unit.Soldier;
+import com.iluwatar.visitor.unitVisitor.UnitVisitor;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 

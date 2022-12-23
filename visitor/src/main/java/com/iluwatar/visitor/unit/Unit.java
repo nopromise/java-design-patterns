@@ -22,31 +22,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.visitor;
+package com.iluwatar.visitor.unit;
 
-import com.iluwatar.visitor.unit.Commander;
 import com.iluwatar.visitor.unitVisitor.UnitVisitor;
 
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
+import java.util.Arrays;
 
 /**
- * Date: 12/30/15 - 19:45 PM.
- *
- * @author Jeroen Meulemeester
+ * Interface for the nodes in hierarchy.
  */
-class CommanderTest extends UnitTest<Commander> {
+public abstract class Unit {
 
-  /**
-   * Create a new test instance for the given {@link Commander}.
-   */
-  public CommanderTest() {
-    super(Commander::new);
-  }
+    private final Unit[] children;
 
-  @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
-  }
+    public Unit(Unit... children) {
+        this.children = children;
+    }
 
+
+    /**
+     * 士兵、军士和长官都有的行为
+     * 该类的主要行为
+     */
+    public abstract void fight();
+
+    /**
+     * Accept visitor.
+     * 接受访客
+     * 接受访客，
+     */
+    public void accept(UnitVisitor visitor) {
+//        Arrays.stream(children).forEach(child -> child.accept(visitor));
+        for (Unit child:children){
+            child.accept(visitor);
+        }
+    }
 }
